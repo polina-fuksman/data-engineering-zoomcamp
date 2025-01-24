@@ -1,8 +1,8 @@
 FROM python:3.9
 
-RUN pip install pandas pyarrow fastparquet
+RUN pip install pandas pyarrow fastparquet sqlalchemy psycopg2 wget
 
 WORKDIR /app
-COPY pipeline.py pipeline.py
+COPY ingest_data.py ingest_data.py
 
-ENTRYPOINT [ "python", "pipeline.py" ]
+ENTRYPOINT [ "python", "ingest_data.py" ]
