@@ -2,16 +2,19 @@
 
 ## Module 1 Homework: Docker & SQL
 
+
 ### Question 1. Understanding docker first run
 
 Command: 
         docker run -it --entrypoint=bash python:3.12.8
 
-**Answer: 24.3.1**
+**Answer:** 24.3.1
+
 
 ### Question 2. Understanding Docker networking and docker-compose
 
-**Answer: postgres:5432**
+**Answer:** postgres:5432
+
 
 ### Question 3. Trip Segmentation Count
 
@@ -71,7 +74,7 @@ sql query:
         (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
         ;
 
-**answer:
+**answer:**
 
 104802	"Up to 1 mile"
 
@@ -81,7 +84,7 @@ sql query:
 
 27678	"In between 7 (exclusive) and 10 miles (inclusive)"
 
-35189	"Over 10 miles"**
+35189	"Over 10 miles"
 
 
 ### Question 4. Longest trip for each day
@@ -102,7 +105,8 @@ sql query:
         limit 1
         ;
 
-**"2019-10-31"	515.89**
+**answer** "2019-10-31"	515.89
+
 
 ### Question 5. Three biggest pickup zones
 
@@ -116,13 +120,14 @@ sql query:
         having sum(total_amount) > 13000
         order by sum(total_amount) desc;
 
-**answer:
+**answer:**
 
 "East Harlem North"	18686.680000000088
 
 "East Harlem South"	16797.260000000075
 
-"Morningside Heights"	13029.790000000039**
+"Morningside Heights"	13029.790000000039
+
 
 ### Question 6. Largest tip
 
@@ -137,9 +142,9 @@ sql query:
         order by tip_amount desc
         limit 1;
 
-**"East Harlem North"	--> "JFK Airport"	87.3**
+**answer:** "East Harlem North"	--> "JFK Airport"	87.3
 
 
 ### Question 7. Terraform Workflow
 
-**answer: terraform init, terraform apply -auto-approve, terraform destroy**
+**answer:** terraform init, terraform apply -auto-approve, terraform destroy
