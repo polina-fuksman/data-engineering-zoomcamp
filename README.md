@@ -5,6 +5,7 @@
 ### Question 1. Understanding docker first run
 
 Command: docker run -it --entrypoint=bash python:3.12.8
+
 Answer: 24.3.1
 
 ### Question 2. Understanding Docker networking and docker-compose
@@ -18,62 +19,69 @@ sql query:
 select count(lpep_pickup_datetime), 'Up to 1 mile' as question
 from green_taxi_data
 where 
-trip_distance <= 1
+(trip_distance <= 1.0)
 and
-DATE(lpep_pickup_datetime) >= '2019-10-01'
+(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
 and
-DATE(lpep_pickup_datetime) < '2019-11-01'
+(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION ALL
+UNION
 
 select count(lpep_pickup_datetime), 'In between 1 (exclusive) and 3 miles (inclusive)' as question
 from green_taxi_data
 where 
-trip_distance > 1 and trip_distance <= 3
+trip_distance > 1.0 and trip_distance <= 3.0
 and 
-DATE(lpep_pickup_datetime) >= '2019-10-01'
+(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
 and
-DATE(lpep_pickup_datetime) < '2019-11-01'
+(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION ALL
+UNION
 
 select count(lpep_pickup_datetime), 'In between 3 (exclusive) and 7 miles (inclusive)' as question
 from green_taxi_data
 where 
-trip_distance > 3 and trip_distance <= 7
+trip_distance > 3.0 and trip_distance <= 7.0
 and 
-DATE(lpep_pickup_datetime) >= '2019-10-01'
+(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
 and
-DATE(lpep_pickup_datetime) < '2019-11-01'
+(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION ALL
+UNION
 
 select count(lpep_pickup_datetime), 'In between 7 (exclusive) and 10 miles (inclusive)' as question
 from green_taxi_data
 where 
-trip_distance > 7 and trip_distance <= 10
+trip_distance > 7.0 and trip_distance <= 10.0
 and 
-DATE(lpep_pickup_datetime) >= '2019-10-01'
+(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
 and
-DATE(lpep_pickup_datetime) < '2019-11-01'
+(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION ALL
+UNION
 
 select count(lpep_pickup_datetime), 'Over 10 miles' as question
 from green_taxi_data
 where 
-trip_distance > 10
+trip_distance > 10.0
 and 
-DATE(lpep_pickup_datetime) >= '2019-10-01'
+(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
 and
-DATE(lpep_pickup_datetime) < '2019-11-01'
+(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 ;
 
-104830	"Up to 1 mile"
-198995	"In between 1 (exclusive) and 3 miles (inclusive)"
-109642	"In between 3 (exclusive) and 7 miles (inclusive)"
-27686	"In between 7 (exclusive) and 10 miles (inclusive)"
-35201	"Over 10 miles"
+answer:
+
+104802	"Up to 1 mile"
+
+198924	"In between 1 (exclusive) and 3 miles (inclusive)"
+
+109603	"In between 3 (exclusive) and 7 miles (inclusive)"
+
+27678	"In between 7 (exclusive) and 10 miles (inclusive)"
+
+35189	"Over 10 miles"
+
 
 ### Question 4. Longest trip for each day
 
@@ -107,8 +115,12 @@ group by "Zone"
 having sum(total_amount) > 13000
 order by sum(total_amount) desc;
 
+answer:
+
 "East Harlem North"	18686.680000000088
+
 "East Harlem South"	16797.260000000075
+
 "Morningside Heights"	13029.790000000039
 
 ### Question 6. Largest tip
