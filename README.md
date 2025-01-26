@@ -4,7 +4,8 @@
 
 ### Question 1. Understanding docker first run
 
-Command: docker run -it --entrypoint=bash python:3.12.8
+Command: 
+        docker run -it --entrypoint=bash python:3.12.8
 
 Answer: 24.3.1
 
@@ -16,59 +17,59 @@ Answer: postgres:5432
 
 sql query:
 
-select count(lpep_pickup_datetime), 'Up to 1 mile' as question
-from green_taxi_data
-where 
-(trip_distance <= 1.0)
-and
-(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
-and
-(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
+        select count(lpep_pickup_datetime), 'Up to 1 mile' as question
+        from green_taxi_data
+        where 
+        (trip_distance <= 1.0)
+        and
+        (DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
+        and
+        (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION
+        UNION
 
-select count(lpep_pickup_datetime), 'In between 1 (exclusive) and 3 miles (inclusive)' as question
-from green_taxi_data
-where 
-trip_distance > 1.0 and trip_distance <= 3.0
-and 
-(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
-and
-(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
+        select count(lpep_pickup_datetime), 'In between 1 (exclusive) and 3 miles (inclusive)' as question
+        from green_taxi_data
+        where 
+        trip_distance > 1.0 and trip_distance <= 3.0
+        and 
+        (DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_dropoff_datetime) >= '2019-10-01')
+        and
+        (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION
+        UNION
 
-select count(lpep_pickup_datetime), 'In between 3 (exclusive) and 7 miles (inclusive)' as question
-from green_taxi_data
-where 
-trip_distance > 3.0 and trip_distance <= 7.0
-and 
-(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
-and
-(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
+        select count(lpep_pickup_datetime), 'In between 3 (exclusive) and 7 miles (inclusive)' as question
+        from green_taxi_data
+        where 
+        trip_distance > 3.0 and trip_distance <= 7.0
+        and 
+        (DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
+        and
+        (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION
+        UNION
 
-select count(lpep_pickup_datetime), 'In between 7 (exclusive) and 10 miles (inclusive)' as question
-from green_taxi_data
-where 
-trip_distance > 7.0 and trip_distance <= 10.0
-and 
-(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
-and
-(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
+        select count(lpep_pickup_datetime), 'In between 7 (exclusive) and 10 miles (inclusive)' as question
+        from green_taxi_data
+        where 
+        trip_distance > 7.0 and trip_distance <= 10.0
+        and 
+        (DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
+        and
+        (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
 
-UNION
+        UNION
 
-select count(lpep_pickup_datetime), 'Over 10 miles' as question
-from green_taxi_data
-where 
-trip_distance > 10.0
-and 
-(DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
-and
-(DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
-;
+        select count(lpep_pickup_datetime), 'Over 10 miles' as question
+        from green_taxi_data
+        where 
+        trip_distance > 10.0
+        and 
+        (DATE(lpep_pickup_datetime) >= '2019-10-01' and DATE(lpep_pickup_datetime) >= '2019-10-01')
+        and
+        (DATE(lpep_pickup_datetime) < '2019-11-01' and DATE(lpep_dropoff_datetime) < '2019-11-01')
+        ;
 
 answer:
 
