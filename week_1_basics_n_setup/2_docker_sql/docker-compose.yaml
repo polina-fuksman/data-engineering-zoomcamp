@@ -8,7 +8,7 @@ services:
     volumes:
       - "./ny_taxi_postrges_data:/var/lib/postgresql/data:rw"
     ports:
-      - "5432:5432"
+      - "5433:5432"
   pgadmin:
     image: dpage/pgadmin4
     environment:
