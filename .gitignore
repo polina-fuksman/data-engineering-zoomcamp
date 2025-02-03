@@ -170,10 +170,11 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# ignore the big files
+# ignore the files
 *.csv
 *.parquet
 *.json
+*.csv.gz
 
 
 .DS_Store
