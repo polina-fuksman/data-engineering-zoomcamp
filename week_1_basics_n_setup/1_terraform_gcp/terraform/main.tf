@@ -1,0 +1,13 @@
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "5.6.0"
+    }
+  }
+}
+
+provider "google" {
+  project = "taxi-rides-ny-448612"
+  region  = "eu-central"
+}
