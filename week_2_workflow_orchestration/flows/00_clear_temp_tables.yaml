@@ -1,0 +1,57 @@
+id: 00_clear_temp_tables
+namespace: zoomcamp
+description: |
+  The CSV Data used in the course: https://github.com/DataTalksClub/nyc-tlc-data/releases
+
+inputs:
+  - id: taxi
+    type: SELECT
+    displayName: Select taxi type
+    values: [yellow, green]
+    defaults: yellow
+
+variables:
+  file: "{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv"
+  staging_table: "public.{{inputs.taxi}}_tripdata_staging"
+  table: "public.{{inputs.taxi}}_tripdata"
+  data: "{{outputs.extract.outputFiles[inputs.taxi ~ '_tripdata_' ~ inputs.year ~ '-' ~ inputs.month ~ '.csv']}}"
+
+tasks:
+  - id: if_yellow_taxi
+    type: io.kestra.plugin.core.flow.If
+    condition: "{{inputs.taxi == 'yellow'}}"
+    then:
+      - id: yellow_truncate_staging_table
+        type: io.kestra.plugin.jdbc.postgresql.Queries
+        sql: |
+          TRUNCATE TABLE {{render(vars.staging_table)}};
+
+      - id: yellow_truncate_table
+        type: io.kestra.plugin.jdbc.postgresql.Queries
+        sql: |
+          TRUNCATE TABLE {{render(vars.table)}};
+
+  - id: if_green_taxi
+    type: io.kestra.plugin.core.flow.If
+    condition: "{{inputs.taxi == 'green'}}"
+    then:
+      - id: green_truncate_staging_table
+        type: io.kestra.plugin.jdbc.postgresql.Queries
+        sql: |
+          TRUNCATE TABLE {{render(vars.staging_table)}};
+          
+      - id: green_truncate_table
+        type: io.kestra.plugin.jdbc.postgresql.Queries
+        sql: |
+          TRUNCATE TABLE {{render(vars.table)}};
+
+  - id: purge_files
+    type: io.kestra.plugin.core.storage.PurgeCurrentExecutionFiles
+    description: This will remove output files. If you'd like to explore Kestra outputs, disable it.
+
+pluginDefaults:
+  - type: io.kestra.plugin.jdbc.postgresql
+    values:
+      url: jdbc:postgresql://postgres_zoomcamp:5432/postgres-zoomcamp
+      username: kestra
+      password: k3str4
