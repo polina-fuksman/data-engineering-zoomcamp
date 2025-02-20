@@ -171,6 +171,7 @@ cython_debug/
 .pypirc
 
 # ignore the files
+*.csv
 *.parquet
 *.json
 *.csv.gz
