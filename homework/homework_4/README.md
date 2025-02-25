@@ -2,7 +2,8 @@
 
 ## Question 1: Understanding dbt model resolution
 
-**Answer:** select * from myproject.raw_nyc_tripdata.ext_green_taxi (because DBT_BIGQUERY_SOURCE_DATASET != DBT_BIGQUERY_DATASET I hope)
+**Answer:** select * from myproject.raw_nyc_tripdata.ext_green_taxi 
+(because DBT_BIGQUERY_SOURCE_DATASET != DBT_BIGQUERY_DATASET I hope)
 
 ## Question 2: dbt Variables & Dynamic Models
 
@@ -22,10 +23,9 @@
 
 ## Question 5: Taxi Quarterly Revenue Growth
 
-<<<<<<< HEAD
 fct_taxi_trips_quarterly_revenue.sql file
 
-
+```
 {{ config(materialized='table') }}
 
 with trips_data as (
@@ -51,6 +51,7 @@ revenue,
 revenue / LAG(revenue,4) OVER (partition by service_type order by service_type, r_year, r_quarter)*100 as changes
 from trips_data
 order by service_type desc
+```
 
 **Answer:** green: {best: 2020/Q1, worst: 2020/Q2}, yellow: {best: 2020/Q1, worst: 2020/Q2}
 
@@ -58,6 +59,7 @@ order by service_type desc
 
 fct_taxi_trips_monthly_fare_p95.sql file
 
+```
 {{ config(materialized='table') }}
 
 with trips_data as (
@@ -86,6 +88,7 @@ with trips_data as (
 select distinct service_type, p97, p95, p90
 
 from trips_data
+```
 
 **Answer:** green: {p97: 55.0, p95: 45.0, p90: 26.5}, yellow: {p97: 31.5, p95: 25.5, p90: 19.0}
 
@@ -93,6 +96,7 @@ from trips_data
 
 fct_fhv_monthly_zone_traveltime_p90.sql file
 
+```
 {{ config(materialized='table') }}
 
 with trips_data as (
@@ -115,16 +119,6 @@ and
 pu_year = 2019
 and 
 pu_month = 11
+```
 
 **Answer:** LaGuardia Airport, Chinatown, Garment District
-=======
-**Answer:**
-
-## Question 6: P97/P95/P90 Taxi Monthly Fare
-
-**Answer:**
-
-## Question 7: Top #Nth longest P90 travel time Location for FHV
-
-**Answer:**
->>>>>>> 929cd5da026be5f9839083a4e019af0abe1db654
