@@ -22,6 +22,7 @@
 
 ## Question 5: Taxi Quarterly Revenue Growth
 
+<<<<<<< HEAD
 fct_taxi_trips_quarterly_revenue.sql file
 
 
@@ -116,3 +117,14 @@ and
 pu_month = 11
 
 **Answer:** LaGuardia Airport, Chinatown, Garment District
+=======
+**Answer:**
+
+## Question 6: P97/P95/P90 Taxi Monthly Fare
+
+**Answer:**
+
+## Question 7: Top #Nth longest P90 travel time Location for FHV
+
+**Answer:**
+>>>>>>> 929cd5da026be5f9839083a4e019af0abe1db654

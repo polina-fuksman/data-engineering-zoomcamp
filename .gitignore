@@ -171,7 +171,11 @@ cython_debug/
 .pypirc
 
 # ignore the files
+<<<<<<< HEAD
 *.csv
+=======
+# *.csv
+>>>>>>> 929cd5da026be5f9839083a4e019af0abe1db654
 *.parquet
 *.json
 *.csv.gz
@@ -191,7 +195,13 @@ cython_debug/
 **/ny_taxi_postgres_data/*
 serving_dir
 .ipynb_checkpoints/
+<<<<<<< HEAD
 
 # gitkeep scv files
 !taxi_zone_lookup.csv
 !week_6_stream_progitcessing/avro_example/data/rides.csv**/ny_taxi_postrges_data/
+=======
+!week_6_stream_progitcessing/avro_example/data/rides.csv
+
+week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data/
+>>>>>>> 929cd5da026be5f9839083a4e019af0abe1db654
