@@ -194,4 +194,4 @@ serving_dir
 
 # gitkeep scv files
 !taxi_zone_lookup.csv
-!week_6_stream_progitcessing/avro_example/data/rides.csv**/ny_taxi_postrges_data/
+!week_6_stream_progitcessing/avro_example/data/rides.csv
