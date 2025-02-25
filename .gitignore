@@ -191,8 +191,7 @@ cython_debug/
 **/ny_taxi_postgres_data/*
 serving_dir
 .ipynb_checkpoints/
-!week_6_stream_progitcessing/avro_example/data/rides.csv
 
-week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data/
-week_1_basics_n_setup/2_docker_sql/output.csv
-week_1_basics_n_setup/2_docker_sql/output.csv
+# gitkeep scv files
+!taxi_zone_lookup.csv
+!week_6_stream_progitcessing/avro_example/data/rides.csv
