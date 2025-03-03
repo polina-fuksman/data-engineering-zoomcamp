@@ -198,3 +198,4 @@ serving_dir
 
 # ignore spark process files 
 *.crc
+*_SUCCESS*
