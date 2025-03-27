@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: staging
+    database: taxi-rides-ny-448612
+    schema: project_payments
+    tables:
+      - name: bs
+
+
+models:
+  - name: stg_bs
+    description: ""
+    columns:
+      - name: unique_row_id
+        data_type: string
+        description: ""
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: warn
+
+      - name: filename
+        data_type: string
+        description: ""
+
+      - name: step
+        data_type: int64
+        description: ""
+
+      - name: customer
+        data_type: string
+        description: ""
+
+      - name: age
+        data_type: string
+        description: ""
+
+      - name: gender
+        data_type: string
+        description: ""
+
+      - name: zipcodeOri
+        data_type: string
+        description: ""
+
+      - name: merchant
+        data_type: string
+        description: ""
+
+      - name: zipMerchant
+        data_type: string
+        description: ""
+
+      - name: category
+        data_type: string
+        description: ""
+
+      - name: amount
+        data_type: numeric
+        description: ""
+
+      - name: fraud
+        data_type: int64
+        description: ""
