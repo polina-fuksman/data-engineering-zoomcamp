@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: payment_data
+    description: >
+      List of transactions with unique data only
+    columns:
+      - name: step
+        data_type: int64
+        description: ""
+
+      - name: customer
+        data_type: string
+        description: ""
+
+      - name: age
+        data_type: string
+        description: ""
+
+      - name: gender
+        data_type: string
+        description: ""
+
+      - name: merchant
+        data_type: string
+        description: ""
+
+      - name: category
+        data_type: string
+        description: ""
+
+      - name: amount
+        data_type: numeric
+        description: ""
+
+      - name: fraud
+        data_type: int64
+        description: ""
+
+  - name: volume_by_fraud
+    description: >
+      Aggregated table of all transactions grouped by fraud parameters. 
+    columns:
+      - name: fraud
+        description: 1 indicates fraud, 0 indicates no fraud.
+      - name: amount
+        description: 'The amount represents the total of all transactions marked as fraud or not fraud.'
+      - name: percentage
+        description: 'The percentage indicates the share of this amount compared to the total volume of all transactions.'
