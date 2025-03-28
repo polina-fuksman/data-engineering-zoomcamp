@@ -1,30 +1,10 @@
 version: 2
 
-sources:
-  - name: staging
-    database: taxi-rides-ny-448612
-    schema: project_payments
-    tables:
-      - name: bs
-
-
 models:
-  - name: stg_bs
-    description: ""
+  - name: payment_data
+    description: >
+      List of transactions with unique data only
     columns:
-      - name: unique_row_id
-        data_type: string
-        description: ""
-        tests:
-          - unique:
-              severity: warn
-          - not_null:
-              severity: warn
-
-      - name: filename
-        data_type: string
-        description: ""
-
       - name: step
         data_type: int64
         description: ""
@@ -41,15 +21,7 @@ models:
         data_type: string
         description: ""
 
-      - name: zipcodeOri
-        data_type: string
-        description: ""
-
       - name: merchant
-        data_type: string
-        description: ""
-
-      - name: zipMerchant
         data_type: string
         description: ""
 
@@ -64,3 +36,14 @@ models:
       - name: fraud
         data_type: int64
         description: ""
+
+  - name: volume_by_fraud
+    description: >
+      Aggregated table of all transactions grouped by fraud parameters. 
+    columns:
+      - name: fraud
+        description: 1 indicates fraud, 0 indicates no fraud.
+      - name: amount
+        description: 'The amount represents the total of all transactions marked as fraud or not fraud.'
+      - name: percentage
+        description: 'The percentage indicates the share of this amount compared to the total volume of all transactions.'
