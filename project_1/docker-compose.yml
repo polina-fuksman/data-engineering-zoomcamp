@@ -75,7 +75,7 @@ services:
       POSTGRES_PASSWORD: k3str4
       POSTGRES_DB: postgres-zoomcamp
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
       - project-data:/var/lib/postgresql/data
     depends_on:
