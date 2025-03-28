@@ -2,18 +2,19 @@
 
 ## Disclaimer
 This project was designed to be as simple as possible.  
+  
 I wanted to first test my understanding of how to create a pipeline using static, one-file data.  
 In my second attempt, I aim to develop a more complex and interesting pipeline.
 
 ## Stack
 
 On this project, I used:  
-Docker,  
-Jupyter Notebook (data exploration),  
-Kestra (data workflow),  
-dbt (data models),  
-GCP (data lake, data warehouse, BI tool): Google Storage, BigQuery, and Looker.  
-Python and SQL
+- Docker,  
+- Jupyter Notebook (data exploration),  
+- Kestra (data workflow),  
+- dbt (data models),  
+- GCP (data lake, data warehouse, BI tool): Google Storage, BigQuery, and Looker.  
+- Python and SQL
 
 ## Step 1. Dataset and data exploration
 
@@ -26,7 +27,7 @@ Data exploration step, made in the [notebook](https://github.com/polina-fuksman/
 - Data is clean and nice, no null values, no outliers, no duplicates in categorical data.  
 - Datatypes are all correct.  
 
-![Data exploration](image-1.png)
+![Data exploration](image-2.png)
 
 ## Step 2. Data workflow with Kestra
 
@@ -37,10 +38,9 @@ Files [01_gcp_kv.yaml](https://github.com/polina-fuksman/data-engineering-zoomca
 
 Data modeling step is represented in the [payments_models folder](https://github.com/polina-fuksman/data-engineering-zoomcamp/tree/main/project_1/payments_models)
 
-stg_bs.sql - staging table  
-
-payment_data.sql — the copy of the staging table without columns that wouldn't be needed for the visualization (unique_row_id, zipcodeOri and  zipMerchant columns were dropped)  
-volume_by_category.sql, volume_by_fraud.sql and volume_by_merchant.sql — models to visualize data in Looker  
+- stg_bs - staging table  
+- payment_data — the copy of the staging table without columns that wouldn't be needed for the visualization (unique_row_id, zipcodeOri and  zipMerchant columns were dropped)  
+- volume_by_category, volume_by_fraud and volume_by_merchant — models to visualize data in Looker  
 
 # Step 4. Visualization
 
@@ -52,4 +52,4 @@ The visualitation is answering the businees questions from the end user:
 -  What is the volume by merchants?  
 -  What is the volume by category?
 
-![alt text](image.png)
+![alt text](image-3.png)
