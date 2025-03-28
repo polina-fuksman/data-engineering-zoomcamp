@@ -16,7 +16,17 @@ On this project, I used:
 - GCP (data lake, data warehouse, BI tool): Google Storage, BigQuery, and Looker.  
 - Python and SQL
 
-## Step 1. Dataset and data exploration
+## Step 0. Problem definition
+
+The problem: Let's pretend we work with the transaction platform and we want to analyze the amount of fraudulent operations. However, we don't have this data in our warehouse, and the only way to use it is to ask the fraud department if they have this data in their database.
+
+The goal for this project is:  
+-  to find data about payment transactions and use this data to answer business questions (see step 4).  
+-  The data was found in an external source; we can pretend that it's data from the fraud department.  
+-  Data is stored as a CSV file, which is compressed every day.  
+-  We want to download this data, explore it, clean this data if it needs to be cleaned, ingest it into our warehouse, and then prepare and use it for BI analysis.
+
+## Step 1. Dataset, and data exploration
 
 Dataset was found on [Kaggle](https://www.kaggle.com/datasets/ealaxi/banksim1).  
 The dataset contains payment data, including parameters such as merchant, transaction amount, fraud marker, and the client's age and gender.  
